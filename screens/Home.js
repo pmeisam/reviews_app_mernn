@@ -6,11 +6,13 @@ import {
   FlatList,
   TouchableOpacity,
   Modal,
-  Button,
+  Keyboard,
 } from "react-native";
 import Card from "../shared/card.js";
 import { globalStyles } from "../styles/global.js";
 import { MaterialIcons } from "@expo/vector-icons";
+import ReviewForm from "./ReviewForm";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 export default function Home({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,6 +36,15 @@ export default function Home({ navigation }) {
       key: "3",
     },
   ]);
+
+  const addReview = (review) => {
+    review.key = reviews.length.toString() + 1;
+    setReviews((currentReviews) => {
+      return [review, ...currentReviews];
+    });
+    setModalOpen(false);
+  };
+
   const pressHandler = (item) => {
     // navigation.navigate('ReviewDetails')
     navigation.push("Details", item);
@@ -50,6 +61,9 @@ export default function Home({ navigation }) {
             onPress={() => setModalOpen(false)}
           />
         </SafeAreaView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <ReviewForm addReview={addReview} />
+        </TouchableWithoutFeedback>
       </Modal>
       <MaterialIcons
         style={styles.modalToggle}

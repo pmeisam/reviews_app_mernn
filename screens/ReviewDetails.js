@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  StyleSheet,
-  Button,
-  Text,
-  SafeAreaView,
-  View,
-  Image,
-} from "react-native";
+import { StyleSheet, Text, SafeAreaView, View, Image } from "react-native";
 import Card from "../shared/card.js";
 import { globalStyles, images } from "../styles/global.js";
+import FlatButton from "../shared/button";
 
 export default function ReviewDetails({ navigation, route }) {
   const { title, body, rating } = route.params;
@@ -19,14 +13,14 @@ export default function ReviewDetails({ navigation, route }) {
   return (
     <SafeAreaView style={globalStyles.container}>
       <Card>
-        <Text>{title}</Text>
+        <Text style={globalStyles.titleText}>{title}</Text>
         <Text>{body}</Text>
-        <Button onPress={pressHandler} title="Go Back" />
         <View style={styles.rating}>
           <Text>Rating: </Text>
           <Image style={styles.image} source={images.ratings[rating]} />
         </View>
       </Card>
+      <FlatButton onPress={pressHandler} text="Go Back" />
     </SafeAreaView>
   );
 }

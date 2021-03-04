@@ -8,6 +8,7 @@ export const globalStyles = StyleSheet.create({
     // fontFamily: "open-sans-italic",
     fontSize: 24,
     color: "#333",
+    fontWeight: "bold",
   },
   paragraph: {
     marginVertical: 8,
@@ -18,6 +19,20 @@ export const globalStyles = StyleSheet.create({
     borderColor: "green",
     borderStyle: "dotted",
     color: "red",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ddd",
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 6,
+  },
+  errorText: {
+    color: "crimson",
+    fontWeight: "bold",
+    marginBottom: 10,
+    marginTop: 6,
+    textAlign: "center",
   },
 });
 
